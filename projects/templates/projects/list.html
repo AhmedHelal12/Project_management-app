@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+    {% for project in object_list%}
+        <li>
+        {{project.title}} <a href= "{% url 'update_project' project.id %}" > edit </a>
+        </li>
+    {% empty %}
+    <h1> I'm trying to be a good man </h1>
+    {%endfor%}
+    </ul>
+{% endblock content %}
