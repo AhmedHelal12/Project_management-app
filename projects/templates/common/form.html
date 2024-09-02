@@ -1,0 +1,31 @@
+
+<ul>
+
+    
+    {% for error in form.non_field_errors  %}
+        <li> {{error|escape}} </li>
+    {% endfor %}
+        
+    
+    {% for field in form   %}
+
+        {% for error in field.errors %}
+            
+            <li> {{error}} </li>
+            
+        {% endfor %}
+            
+        
+    {% endfor %}
+        
+
+</ul>
+
+
+{% for field in form %}
+    <div>
+        <label> {{field.label}} </label>
+        {{field}}
+    </div>
+{% endfor %}
+    

@@ -1,13 +1,100 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
-    <ul>
-    {% for project in object_list%}
-        <li>
-        {{project.title}} <a href= "{% url 'update_project' project.id %}" > edit </a>
-        </li>
-    {% empty %}
-    <h1> I'm trying to be a good man </h1>
-    {%endfor%}
-    </ul>
+
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-center ">
+            <h3 class="my-5 me-auto"> My projects </h3>
+            <div class="btn btn-outline-success"> 
+                <i class="bi bi-plus-lg"></i>
+                <a class="text-success text-decoration-none" href="{% url 'create_project' %}">
+                    New Project
+                </a>
+            </div>
+        </div>
+
+        <div class="row h-100"> 
+            {% for project in object_list%}
+            <div class="col-lg-4 col-md-6">
+                <div class = "card" >
+                    <div class = "card-body " >
+                        <span class="badge text-light bg-dark rounded-pill p-2"> 
+                            {{project.get_status_display}}
+                        </span>
+                        <div class="card-title my-2"> 
+                            {{project.title}}
+                        </div>
+                        <div class="card-title text-black-50"> 
+                            {{project.description}}
+                        </div>
+                        <div class="details d-flex ">
+                            <time class="me-auto" datetime="{{project.created_at}}">
+                                {{project.created_at|naturaltime}}
+                            </time>
+                            <div class="editing">
+                                <a href="{% url 'update_project' project.id %}" class=" btn btn-outline-dark me-3 btn-sm">
+                                    Edit
+                                </a>
+                                <form action="{% url 'delete_project' project.id %}" method="POST" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn-outline-danger btn btn-sm">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%empty %}
+
+            <div class="main col-12 border bg-white rounded-3 text-center p-5">
+                <p class="">There are No projects to Show </p>
+                <span> <i class="bi bi-emoji-frown d-block fs-1 p-3"></i> </span>
+                <div class="btn btn-outline-success"> 
+                    <i class="bi bi-plus-lg"></i>
+                    <a class="text-success text-decoration-none" href="{% url 'create_project' %}">
+                        New Project
+                    </a>
+                </div>
+            </div>
+            {%endfor%}
+
+            {% if page_obj.paginator.count > 0 %}
+                <div class="">
+                    
+                    <nav>
+                        <ul class="paginations d-flex justify-content-center my-3 list-unstyled">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item"> 
+                                    <a class="page-link" href="?page={{page_obj.previous_page_number}}"> Previous </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled"> 
+                                    <a class="page-link " href="#"> Previous </a>
+                                </li>
+            
+                            {% endif %}
+
+                            {% if page_obj.has_next %}
+                                <li class="page-item"> 
+                                    <a class="page-link" href="?page={{page_obj.next_page_number}}"> Next </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled"> 
+                                    <a class="page-link " href="#"> Next </a>
+                                </li>
+            
+                            {% endif %}
+                        </ul>
+                    </nav>
+
+                </div>
+                    
+            {%endif%}
+        </div>
+    </div>
+
+    
+
 {% endblock content %}

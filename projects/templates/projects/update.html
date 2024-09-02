@@ -2,11 +2,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="POST" >
-        {% csrf_token %}
-        {{form}}
-        <input type='submit' value='save' />
-    </form>
+    <div class="container">
+    <h5 class="mt-5 text-black-50"> {{object.title}} </h5>
 
-    {% include 'projects/task.html' with project=object%}
+    <div class="row">
+        <div class="col-4">
+            
+            <form class="mb-2 " method="post" action="{% url 'update_project' object.id %}" >
+                {% csrf_token %}
+
+            <div class="card container-fluid">
+                <ul class="list-unstyled">
+                    {% for field in form  %}
+                    <li class="container-fluid"> {{field}} </li>
+                {% endfor %}
+                <time class="ms-4" datetime="{{object.created_at}}">
+                   <i class="bi bi-clock me-2"></i> {{object.created_at}}
+                </time>
+                </ul>
+                    <button  type="submit" class="btn btn-success w-100 mb-2"> <i class="bi bi-box-arrow-down"></i> Save</button>
+                </form>
+                <form class="mb-2 " method="post" action="{% url 'delete_project' object.id %}" >
+                    {% csrf_token %}
+                    <button  type="submit" class="btn btn-danger w-100 mb-2"> <i class="bi bi-trash "></i> Delete</button>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="col-8">
+                {% include "projects/task.html" with project=object %}
+        </div>
+    </div>
+    </div>
 {% endblock content %}

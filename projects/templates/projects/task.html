@@ -1,8 +1,11 @@
 
-<ul>
+
+
+
+<ul class="list-unstyled">
     {% for task in project.task_set.all %}
-    <li> 
-    <form method="post" action="{% url 'update_task' task.id %}" >
+    <li class="d-flex list-group-item justify-content-center align-items-center"> 
+    <form method="post"  action="{% url 'update_task' task.id %}" >
         {% csrf_token %}
         <input
             type='checkbox'
@@ -11,18 +14,18 @@
              onchange="this.form.submit()" />
         {{task.description}}
     </form>
-    <form method="post" action="{% url 'delete_task' task.id %}" >
+    <form class="ms-auto" method="post" action="{% url 'delete_task' task.id %}" >
         {% csrf_token %}
-        <button > Delete </button>
+        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash "></i> </button>
     </form>
         </li>
     {%endfor%}
 </ul>
 
-<form method="post" action="{% url 'create_task' %}" >
+<form class="d-flex" method="post" action="{% url 'create_task' %}" >
     {% csrf_token %}
     <input type='hidden' value={{project.id}} name='project'/>
-    <input type='text' name='description' />
-    <input type='submit' value='add' />
+    <input class="form-control" type='text' name='description' placeholder="New Task"/>
+    <input type='submit' value='add' class="bg-success text-light "/>
 </form>
 
