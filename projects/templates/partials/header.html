@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <nav class="navbar navbar-expand-lg navbar-light  bg-success">
-    <div class="container-fluid ">
+    <div class="container-fluid d-flex ">
       <a class="navbar-brand text-light" href="{% url 'project_list' %}">Project Management</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,6 +12,41 @@
             <a class="nav-link active text-light" aria-current="page" href="{% url 'project_list' %}">Home</a>
           </li>
         </ul>
+          {% if user.is_authenticated %}
+          <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{user.username}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <form method="post" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="dropdown-item">{% trans 'Logout' %}</button>
+                </form>
+
+              </ul>
+            </li>
+            <form class="search ms-auto" method="GET" action="{% url 'project_list' %}">
+              <div class="d-flex justify-content-center align-items-center">
+                <input class="form-control" value="{{request.GET.q}}" name="q" type="text" placeholder="Search"/>
+                <button type="submit" class="btn btn-success border-light"> <i class="bi bi-search"></i> </button>
+              </div>
+            </form>
+          </ul>
+          {% else %}
+          <ul class="navbar-nav ">
+            <a class="btn btn-outline-light  me-2" href="{% url 'register' %}""> Register </a>
+            <a class="btn btn-outline-light" href="{% url 'login' %}""> Login </a>
+          </ul>
+        {% endif %}
+
+
+
+        
+
+          
       </div>
     </div>
   </nav>
