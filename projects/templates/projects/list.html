@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 {% load humanize %}
 {% block content %}
 
     <div class="container">
         <div class="d-flex align-items-center justify-content-center ">
-            <h3 class="my-5 me-auto"> My projects </h3>
+            <h3 class="my-5 me-auto"> {% trans "My projects" %} </h3>
             <div class="btn btn-outline-success"> 
                 <i class="bi bi-plus-lg"></i>
                 <a class="text-success text-decoration-none" href="{% url 'create_project' %}">
-                    New Project
+                    {% trans 'New Project' %}
                 </a>
             </div>
         </div>
@@ -33,7 +35,7 @@
                             </time>
                             <div class="editing">
                                 <a href="{% url 'update_project' project.id %}" class=" btn btn-outline-dark me-3 btn-sm">
-                                    Edit
+                                    {% trans 'Edit' %}
                                 </a>
                                 <form action="{% url 'delete_project' project.id %}" method="post" style="display:inline;">
                                     {% csrf_token %}
@@ -49,12 +51,12 @@
             {%empty %}
 
             <div class="main col-12 border bg-white rounded-3 text-center p-5">
-                <p class="">There are No projects to Show </p>
+                <p class="">{% trans 'There are No projects to Show' %} </p>
                 <span> <i class="bi bi-emoji-frown d-block fs-1 p-3"></i> </span>
                 <div class="btn btn-outline-success"> 
                     <i class="bi bi-plus-lg"></i>
                     <a class="text-success text-decoration-none" href="{% url 'create_project' %}">
-                        New Project
+                        {% trans 'New Project' %}
                     </a>
                 </div>
             </div>
@@ -67,22 +69,22 @@
                         <ul class="paginations d-flex justify-content-center my-3 list-unstyled">
                             {% if page_obj.has_previous %}
                                 <li class="page-item"> 
-                                    <a class="page-link" href="?page={{page_obj.previous_page_number}}"> Previous </a>
+                                    <a class="page-link" href="?page={{page_obj.previous_page_number}}"> {% trans 'Previous' %} </a>
                                 </li>
                             {% else %}
                                 <li class="page-item disabled"> 
-                                    <a class="page-link " href="#"> Previous </a>
+                                    <a class="page-link " href="#"> {% trans 'Previous' %} </a>
                                 </li>
             
                             {% endif %}
 
                             {% if page_obj.has_next %}
                                 <li class="page-item"> 
-                                    <a class="page-link" href="?page={{page_obj.next_page_number}}"> Next </a>
+                                    <a class="page-link" href="?page={{page_obj.next_page_number}}"> {% trans "Next" %} </a>
                                 </li>
                             {% else %}
                                 <li class="page-item disabled"> 
-                                    <a class="page-link " href="#"> Next </a>
+                                    <a class="page-link " href="#"> {% trans "Next" %} </a>
                                 </li>
             
                             {% endif %}

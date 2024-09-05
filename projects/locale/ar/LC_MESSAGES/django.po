@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-05 21:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: projects/forms.py:20
+msgid "Category"
+msgstr "التصنيف"
+
+#: projects/forms.py:21
+msgid "title"
+msgstr "عنوان"
+
+#: projects/forms.py:22
+msgid "description"
+msgstr ""
+
+#: projects/models.py:14
+msgid "Pending"
+msgstr "قيد التفيذ"
+
+#: projects/models.py:15
+msgid "Completed"
+msgstr "مكتمل"
+
+#: projects/models.py:16
+msgid "Postponed"
+msgstr "معلق"
+
+#: projects/models.py:17
+msgid "Canceled"
+msgstr "ملغي"
+
+#: projects/templates/partials/header.html:5
+msgid "Projects Management"
+msgstr "ادارة المشاريع"
+
+#: projects/templates/partials/header.html:12
+msgid "Home"
+msgstr "الرئيسية"
+
+#: projects/templates/partials/header.html:22
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: projects/templates/partials/header.html:26
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: projects/templates/partials/header.html:40
+msgid "Register"
+msgstr "تسجيل حساب"
+
+#: projects/templates/partials/header.html:41
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: projects/templates/projects/create.html:10
+#: projects/templates/projects/list.html:13
+#: projects/templates/projects/list.html:59
+msgid "New Project"
+msgstr "مشروع جديد"
+
+#: projects/templates/projects/create.html:17
+msgid "Create"
+msgstr "إنشاء"
+
+#: projects/templates/projects/list.html:9
+msgid "My projects"
+msgstr "مشاريعي"
+
+#: projects/templates/projects/list.html:38
+msgid "Edit"
+msgstr "تعديل"
+
+#: projects/templates/projects/list.html:54
+msgid "There are No projects to Show"
+msgstr "لا يوجد اية مشاريع للعرض"
+
+#: projects/templates/projects/list.html:72
+#: projects/templates/projects/list.html:76
+msgid "Previous"
+msgstr "السابق"
+
+#: projects/templates/projects/list.html:83
+#: projects/templates/projects/list.html:87
+msgid "Next"
+msgstr "التالي"
+
+#: projects/templates/projects/update.html:26
+msgid "Save"
+msgstr "حفظ"
+
+#: projects/templates/projects/update.html:30
+msgid "Delete"
+msgstr "مسح"

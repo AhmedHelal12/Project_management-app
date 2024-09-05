@@ -1,19 +1,20 @@
-
 {% extends 'base.html' %}
+{% load i18n %}
+
 
 {% block content %}
 
     <div class="container py-5 ">
         <div class="card bg-gradiant p-3">
             <h3 class="card-title">
-                New Project
+                {% trans "New Project" %}
             </h3>
 
             <div class="card-body ">
                 <form method="POST" action="{% url 'create_project'%}">
                     {% csrf_token %}
                     {% include "common/form.html" with form=form %}
-                    <button class="btn bg-success text-white ">Create </button> 
+                    <button class="btn bg-success text-white ">{% trans "Create" %} </button> 
                 </form>
             </div>
         </div>
